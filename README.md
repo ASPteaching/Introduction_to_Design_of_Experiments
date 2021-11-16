@@ -1,2 +1,2 @@
-# Introduction_to_Design_of_Experiments_-Int
+# Introduction to Design of Experiments
 Materials for a short introduction to experimental design for biomedical scientists
