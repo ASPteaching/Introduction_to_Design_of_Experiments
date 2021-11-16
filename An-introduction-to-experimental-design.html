@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Introduction to Experimental Design</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alex Sanchez-Pla" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
+    <link rel="stylesheet" href="my.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Introduction to Experimental Design
+### Alex Sanchez-Pla
+### Departamento de Genética, Microbiología y Estadística (UB) <br> Unidad de Estadística y Bioinformática (VHIR)
+### Versión 2021-11-16
+
+---
+
+
+
+
+# Outline
+
+.columnwide[
+
+### 1) [Experiments: What, why, how](#Introduction)
+
+### 2) [Principles of experimental design](#Principles)
+
+### 3) [Basic types of experimental designs](#TypesDesenyos)
+
+### 4) [Some resources](#Resources)
+
+]
+
+---
+
+class: inverse, middle, center
+
+name: Introduction
+
+# Experiments: What, Why, How
+
+---
+
+
+# Types of studies in medical research
+
+.center[
+&lt;img align = "center" src = "images/TypesOfStudies.png" width = "90%"&gt; 
+]
+
+source: Dtsch Arztebl Int 2009; 106(15): 262-8. 
+
+DOI: https://doi.org/10.3238/arztebl.2009.0262 
+
+
+---
+
+# Why experiment?
+
+- A very common type of research study is _experimental studies_.
+
+- The purposes of the experimental studies are diverse. For example, we could propose experiments to:
+
+1. Compare responses to different treatments.
+2. Determine the cause (s) of the response variation.
+3. Find the conditions in which the optimal response is reached,
+4. Develop a model to predict responses.
+  
+- A characteristic of experimental versus observational studies is that, under the right conditions, the former are the only ones that allow establishing causal relationships.
+    
+---
+# An example and basic ideas
+
+.pull-left[
+
+- Goal: investigate the effect of a drug to prevent the development of diabetes in genetically modified mice.
+- Effect will be tested and compared with that of administering a placebo.
+- Effectiveness of the treatment may be affected by the age of the animal, so it is applied to mice "young" or "old"
+- Mice randomly selected within each age group will receive either the drug or a placebo (administered in the same way as the drug).
+- To determine the effect of each drug/age combination, weight, and decrease in age-related insulin resistance will be determined.
+]
+
+.pull-right[
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+.center[
+&lt;img src = "images/DrugEffectExperimentExample.jpg" width = "90%"&gt; 
+]
+
+Source: EMBO Mol Med (2018) 10:e8791 
+
+https://doi.org/10.15252/emmm.201708791
+]
+
+---
+
+# Some definitions
+
+- An __experiment__ is any investigation in which a particular set of conditions is applied to and the results of said experiment are observed and evaluated. app. _For example, study of the drug in pre-diabetic mice_
+
+- Each group of experimental conditions is a __treatment__ or __factor__. For example "Drug" and "Age" are two factors.
+
+- Each particular condition within a factor is a __level__ of that factor. For example Drug/Placebo or Old/Young are two factors with two levels each.
+
+- The results that we observe after applying a treatment are the __responses__.
+
+
+---
+
+# Some important definitions:
+
+- __Experimental Unit (UE) __ The physical entity or subject exposed to the treatment independently of other units.
+- Each mouse is an experimental unit
+  
+- __Unit of observation (UO) __ The unit in which they are carried out.
+observations, that is, measurements.
+- It can be a sample of the EU or be identical to the EU.
+  
+- __Experimental error__: random variation observed between different repetitions carried out, or not, under the same experimental conditions.
+
+- __ Observation error__: The variation between multiple observations of the same
+experimental unit.
+
+---
+
+# Types of variability
+
+.pull-left[
+- _Random variability_ 
+- Differences expected to be observed when different subjects from the same sample are measured.
+- It is usually always present to a greater or lesser degree.
+- It is usually reduced by increasing the sample size
+
+- _Systematic variability_
+- Differences between subjects or observations attributable to the measurement process or to a non-random selection of all the individuals in the sample.
+- Usually can be corrected
+]
+
+.pull-right[
+
+&lt;img align = "center" src = "images/randomVariation.png" width = "60%"&gt; 
+
+&lt;img align = "center" src = "images/systematicVariation.png" width = "60%"&gt; 
+
+]
+
+
+
+---
+# What characterizes an experiment?
+
+1. The treatments to be used
+2. The experimental units to be used
+3. The way treatment levels are assigned
+to the experimental units, that is, _the experimental design_
+4. Responses that are measured
+
+---
+
+# What characterizes a good experimental design?
+
+- A good experimental design
+
+- Avoid biases or systematic errors
+- It allows a precise estimation of the response, which implies that the random error is as low as possible.
+- It allows an adequate estimation of the error.
+- It has wide validity: the experimental units are a sample of the population in question, so it is possible to extrapolate the conclusions of the sample to the population.
+
+---
+
+# How to get a good design
+
+- Try to apply some ideas, basic and somewhat redundant, but which, together, guarantee a good result.
+
+1. Rely on a _checklist_ of the experimental design.
+2. Apply _the scientific method in the appropriate study_.
+3. Be based on the basic principles of Experimental Design
+- Randomization, 
+- Replication, 
+- Local control.
+
+- And also
+- Plan design and analysis at the same time,
+- Involve your favorite statistician from the beginning (or before) of the experiment.
+
+---
+
+# Design checklist
+
+1. Define the objectives of the experiment.
+2. Identify all possible sources of variation.
+3. Select an appropriate experimental design.
+4. Specify the experimental process
+5. Conduct a pilot study
+6. Specify the hypothesized model
+7. Describe the tests to be performed.
+8. Estimate the required sample size using the results.
+of the pilot study
+9. Review your decisions in Steps 1 through 8 and make the
+necessary revisions.
+
+---
+# Design, experimentation and analysis
+
+.center[
+&lt;img align = "center" src = "images/metodoCientifico.png" width = "80%"&gt; 
+]
+
+---
+
+class: inverse, middle, center
+
+name: Principles
+
+# Principles of experimental design
+
+---
+
+# Basic principles of experimental design
+
+- Good experimental designs share common traits.
+
+- Apart from the fact that they are based on the logic of experimentation and the scientific method, they usually rely on some ideas, whose application guarantees the obtaining of good designs, or, in any case, better designs than those studies in which they are not taken into account explicitly.
+agree to rely on experimental design
+
+Some of these principles are:
+
+- Randomization 
+
+- Replication
+
+- Local control or blocking
+
+
+---
+
+# 1. Randomization
+
+- Since it is not possible to avoid random variations, we can randomly assign treatments to units to try to compensate for the effect of such variation.
+
+- This can be done
+- Randomly assigning individuals to treatments and/or
+- Running the experiments in random order.
+  
+- Randomizing does not mean doing everything at random. Randomization within groups is common to achieve a balanced allocation of treatments to individuals.
+
+- Randomization is important to ensure the validity of statistical procedures.
+
+- Randomization it helps prevent a _preferential assignment_ of treatment from being made to some experimental units.
+- For example, give the drug that works best to patients with the worst prognosis.
+
+---
+
+# 2. Replication
+
+- There is general agreement on the need to apply each treatment independently to several experimental units.
+- This ... 
+- It helps to establish the reproducibility of the results.
+- Protects against eventual abnormal results or unusual.
+- Provides a way to estimate the variance of the experimental error in the absence of systematic differences between the experimental units.
+- Provides the ability to increase the precision of estimates of means of treatment.
+- By itself, it does not guarantee valid estimates of experimental error or differences between treatments
+
+---
+
+# Replicas, power and precision
+
+- The number of repetitions `\(r\)` is directly related to the precision of the experiment.
+$$
+1/var (mean) = r/\sigma ^ 2 (*)
+$$
+- An efficient design has more power to detect differences between treatment effects.
+- From (*) it follows that 
+    - the greater the number of replicas, `\(r\)`,
+    - and lower variability, `\(\sigma^2\)`,
+    - the greater the power a design provides.
+
+---
+
+# How many replicas are needed?
+
+- Given the relationship between precision, variance and the number of replications, it is possible (for most types of experimentals designs) to derive formulas to calculate the sample size from:
+- effect size,
+- the level of significance (P Error type I)
+- the power (1-P error type II)
+
+- Although the derivation is approximate, the application
+it is simple, especially if you use calculators sample size as:
+
+- Sample size online calculator example: [granmo] (https://www.imim.es/ofertadeserveis/software-public/granmo/)
+---
+
+# Technical and biological replicates
+
+.pull-left[
+
+&lt;p&gt;
+&lt;p&gt;
+&lt;img align = "center" src = "images/replicasTecnicas.png" width = "100%"&gt; 
+for
+&lt;small&gt;
+Technical replications allow quantifying variability associated with the technique used.
+&lt;/small&gt;
+]
+
+.pull-right[
+&lt;img align = "center" src = "images/replicasBiologicas.png" width = "100%"&gt; 
+for
+&lt;small&gt;
+Biological replications allow quantifying the variability associated with the study population.
+&lt;/small&gt;
+]
+
+- The total variability can be decomposed into various _components of the variance_.
+
+$$
+\sigma (TOTAL)^2 = \sigma(TEC)^2 + \sigma(BIO) ^ 2 + \sigma (ERR) ^ 2
+$$
+- _In general_ : 
+
+$$ \sigma (TEC) ^ 2 &lt; \sigma (BIO) ^ 2 $$
+- source: https://www.licor.com/bio/blog/technical-and-biological-replicates
+
+
+---
+
+# Replicates or _pools_?
+
+- Sometimes it may be decided to combine mRNA from different samples to form a "pooled sample" or _pool_
+
+- This can be done because ...
+- Each separate sample does not provide enough mRNA
+- You want to compensate for excess variability by "averaging" similar samples.
+
+- This can be misleading but is correct if done correctly:
+- Combining several samples in each group but ...
+- Using several groups of different samples
+
+- What not to do:
+  - Don't use groups when individual information is important (e.g. paired designs)
+  - A sample with 3 grouped individuals is not the same as 3 individual samples!
+    
+---
+
+# 3. Local control
+
+- In many situations it is common for not all samples to be homogeneous.
+- For example in an experiment to compare two treatments using expression microarrays:
+  - We can have different types of subjects
+  - Male or female animals
+  - Animals from several litters (those from the same litter look more like each other)
+- Samples processed in three different days due to the capacity of the equipment ...
+    
+- If there are systematic differences between groups of samples ("blocks") the effects of interest (for example the effect of a treatment) can be seen affected by differences between samples of different blocks,
+
+- In other words, it may not be clear if the differences observed are attributable to the effect of the treatment or other factors that we call _confounding_.
+
+- Local control or blocking, that is to say _distributing each treatment evenly among the different blocks_ is the way to minimize its effect.
+
+---
+
+# How to apply local control
+
+.pull-left[
+
+&lt;img align = "center" src = "images/badDesign.png" width = "90%"&gt; 
+
+&lt;p&gt;
+
+- This design does not apply good local control.
+
+- The treatment effect can be confused with the effect of age or that of the production batch.
+
+]
+
+.pull-right[
+
+&lt;img align = "center" src = "images/goodDesign.png" width = "90%"&gt; 
+&lt;p&gt;
+
+- This design applies good local control.
+
+- The possible effect of sex or of the production batch is distributed among the different levels of treatment, which will allow them to be analyzed separately.
+
+]
+
+---
+
+# Batch effect and its adjustment 
+
+.center[ 
+&lt;img align = "center" src = "images/batchEffect.png" width = "75%"&gt; 
+] 
+ 
+- A Principal Component Analysis (PCA) can reveal the presence of undetected blocks in the design.
+ 
+- If the different levels of the "batch" are distributed among the treatment levels, it is possible to correct them. 
+ 
+- If there is confusion between the two (for example, different batches correspond to each level of treatment), it is not.
+
+---
+
+class: inverse, middle, center
+
+name: Layout Types
+
+# Basic types of experimental designs
+
+---
+
+# Experimental designs
+
+- A key point in any experiment is the way in which
+_the experimental units are assigned to the treatments_.
+
+- This assignment must be done in such a way that:
+  
+- it is possible to estimate the effects that interest the researcher
+  
+- the random variability is as small as possible ("maximum precision") with the available resources.
+  
+- the best possible local control is achieved, given the circumstances of the experiment.
+
+- To achieve the best possible design, we will take into account the components that define each design.
+
+---
+
+# Design components
+
+When considering the choice of a design for an experiment we must take into account:
+
+- The **design of the treatments**.
+- Which and how many treatments are included in the study?
+- Are they considered separately or in combination?
+- What are the levels of each treatment?
+
+- The **error control design**.
+- How are treatments assigned to experimental units ?. &lt;br&gt; 
+This depends on the resources, the available units, the desired precision, the heterogeneity between UEs.
+
+- The **Observational Design**
+- At what level are the observations made?
+&lt;br&gt; Is each EU an OU or are there several OUs per EU (subsampling)?
+  
+---
+
+# From components to design
+&lt;small&gt;
+&lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Treatments Design  &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Error control D. &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Observational Design &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Completely Randomized &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 factor, (k niv.), r replicates/level &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Assign trat. 1 ... k  UE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 UU = 1 UO &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Completely randomized block design &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 factor (k level), 1 block (l level), k * l EU &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Assign trats. 1 ... k to a UE, in each block &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 UE = 1 UO &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Two-factor design with interaction &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2 factors (k, l levels.), r replicates of each combination &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Assign each combination 1 ... k * l of treatments ar UE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 UE = 1 UO &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Design of repeated measures of a factor &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 Trat. (k niv), l repeated measures, r replicas/combination &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Assign trats. 1 ... kar individuals at time 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; For each UE there are 'l' UO (temporal measurements) &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/small&gt;
+---
+# Designs, Models and Analysis
+
+- The design of the treatments and the observational design help us to choose the appropriate design for an experiment.
+- Each design can be represented by a _linear model_. Said model:
+- Represents the relationships between responses, treatments and experimental and observational units.
+- It is the basis for the analysis of the data once collected.
+
+- The design of the error control defines how the randomization is carried out, that is, the assignment of individuals to the treatments.
+- Should be done when planning the investigation
+
+---
+
+# Experimental design and ANOVA
+
+- Sometimes the design of the experiment is confused with its analysis,
+- It is common in some books or statistics courses in which the data already collected are provided without paying attention to how the randomization of treatments was carried out.
+- In these cases there is an overlap between "experimental design" and data analysis, which easily leads to confuse both concepts.
+
+- Summarizing: Although the treatment design suggests a certain analysis model _ the experimental design should not be confused with the analysis of the data collected in the experiment! _
+
+---
+
+# Experimental design and ANOVA
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Treatments Design  &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Error control D. &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Analysis &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Completely Randomized &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 factor, (k niv.), r replicates/level &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Assign trat. 1 ... k  UE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1-way ANOVA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Completely randomized block design &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 factor (k level), 1 block (l level), k * l EU &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Assign trats. 1 ... k to a UE, in each block &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2-way ANOVA without interaction &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Two-factor design with interaction &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2 factors (k, l levels.), r replicates of each combination &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Assign each combination 1 ... k * l of treatments ar UE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3-way ANOVA with interaction &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Design of repeated measures of a factor &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 Trat. (k niv), l repeated measures, r replicas/combination &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Assign trats. 1 ... kar individuals at time 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ANOVA of repeated measures &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+# Completely randomized design
+
+- Gene therapy experiment: compare four techniques to correct faulty genes
+
+- A: normal gene inserted in a nonspecific location
+- B: abnormal gene exchanged for a normal gene
+- C: abnormal gene repaired by selective reversion
+mutation
+- D: Regulation of a particular gene altered
+
+- 20 genetically identical and modified mice are selected to present the disease to be treated.
+
+- Treatments are randomized
+
+- The response variable is gene expression.
+
+---
+
+# Completely randomized design
+
+- The simplest design, suitable for comparing several treatments on a homogeneous sample.
+
+- Randomization is performed by randomly assigning each of the 1 .... k treatments to individuals out of a total of N = k * r
+
+- The basic linear model for one-factor experiments is as follows:
+$$
+Y\_{ij}=\mu\_i+e\_{ij}=\mu+\tau\_i+e\_{ij}, \quad i=1\dots k,\quad j=1\dots r.
+$$
+- The analysis will usually be carried out by means of a one-way analysis of variance (ANOVA).
+
+---
+
+# Randomization in a DCA
+
+- There are many libraries that allow randomization, but it can also be done easily with a small script.
+
+- Randomization is carried out _before_ the experiment and only indicates which treatment each experimental unit will receive.
+- Once the experiment is carried out, it is usual to present the data ordered by the treatments received, which _eliminates the evidence_ that the assignment has been made randomly.
+
+.center[ 
+&lt;img align = "center" src = "images/CRDrandomization.png" width = "75%"&gt; 
+] 
+
+---
+
+# Random block design
+
+- After exposure to a poison, cells can be treated by different substances that accelerate regeneration.
+
+- A study wants to compare six of these growth factors (5 are treatments and 1 is a control).
+
+- A confusion has caused that there is not enough culture medium to grow all treatments with replicas. Instead, there are 4 culture media available.
+
+- Since a complete randomization is not possible, it is decided to _block by type of culture medium_
+
+- We prepare 4 groups of 6 plates, each group of a type of culture
+- Within each group a different treatment is randomly assigned to each of the six plates.
+
+---
+
+# Random block design
+
+- The completely randomized design loses utility if the experimental material is not homogeneous.
+
+- In these cases we can apply local control (blocking) and divide the experimental material in homogeneous subgroups, which we will call blocks.
+
+- Once the samples have been distributed among the blocks, the treatments are applied to the experimental units randomly and independently of the other blocks.
+
+- This design is called _Random Block Design (RBD) _.
+
+- The linear model that describes the experiment is the following:
+$$
+Y\_{ij}=\mu+\rho\_i+\tau\_j+e\_{ij}, i=1\dots k, \, j=1\dots l.
+$$
+- The analysis will usually be carried out by means of an analysis of variance (ANOVA) of two factors without interaction.
+- Obviously, if it is not possible to distribute the samples evenly between the blocks, the situation becomes complicated and we are faced with _unbalanced designs_
+
+---
+
+# Block or randomize?
+
+- _Block what you can and randomize what you cannot - Box, Hunter &amp; Hunter (1978) _
+
+- Randomization provides a rough balance between
+variables that have not been taken into account.
+
+- Local control eliminates the effect of differences between blocks, thereby ensuring that differences between treatments cannot be due to differences between blocks.
+
+---
+
+# Factorial design
+
+- A study was conducted to study the effect of a drug and a diet on systolic blood pressure.
+
+- 20 people with high blood pressure were randomized to one of four treatment conditions.
+
+- Control group (neither diet nor drug modification)
+ - Diet modification only
+- Drug only
+- Modification of both drugs and diet
+
+- At the end of the treatment period, systolic blood pressure was assessed.
+
+- It is a factorial design in which each of the two treatments (drug, diet) can be randomly assigned to each individual.
+
+- By having 20 individuals, there can be replicas of each treatment combination and, therefore, the interaction between the drug and the diet can be estimated.
+
+---
+
+# Factorial design
+
+- This design is useful to study the effects of several factors simultaneously.
+
+- The "treatments" are _all combinations of the different factors_ under study.
+
+- Randomization is similar to the completely randomized design, that is, each combination of treatments is randomly assigned to independent _r_ UEs.
+
+- In this case it is possible to study not only the effects of each factor separately but also the interaction between them.
+
+- The linear model that describes a two-factor design with interaction with _t_ and _s_ levels and _r_ replicas respectively is the following:
+
+$$
+Y\_{ijk}=\mu+\rho\_i+\tau\_j+\tau\rho\_{ij}+e\_{ijk},\, i=1\dots t,\, j= 1\dots l, \, k=1\dots r.
+$$
+
+- The analysis will usually be carried out by means of an analysis of variance (ANOVA) of two factors with interaction.
+
+---
+
+# Repeated measures design
+
+- A study wanted to measure the concentration of certain metabolites in plasma after two dietary interventions consisting of adding an amount of olive oil or an equivalent amount of walnuts to the standard diet.
+
+- 21 mice subjected to the same diet were taken and an intervention (water, olive oil or nuts) was randomly assigned.
+
+- The concentration of the metabolite in blood was measured after before the intervention and at 24h, 48h and one week.
+
+---
+
+# Repeated measures design
+
+- When we take more than one measurement in each experimental unit, we have an within-subjects design.
+- In this case, the data have different characteristics from the previous ones.
+
+  - The measurements taken on the same individual are correlated.
+  - There is a new source of variation that must be taken into account: variability _within_ subjects.
+  
+- Apart from this they offer the same possibilities as with other designs, but with an additional source of variability, "time".
+
+- The analysis of repeated measures data is a whole world. Although the _ANOVA of repeated measures_ is traditionally used, the current trend is to perform the analyzes using _linear mixed models_ which are much more flexible.
+
+---
+
+# Summarizing ...
+
+- A good experimental design is essential to carry out good experiments.
+
+- Experimental design means _planning in advance_, that is, before and not after the experiment.
+
+- The experimental design must consider all steps: from sampling to data analysis.
+
+- Whenever possible we should have statistical support _from the beginning of the study_
+
+---
+
+# And, as the master said ...
+
+.center[
+&lt;img align = "center" src = "images/FisherDixit.png" width = "90%"&gt; 
+]
+
+---
+
+class: inverse, middle, center
+
+name: Resources
+
+# References and resources
+
+---
+
+# References and resources
+
+- [www.3rs-reduction.co.uk] (http://www.3rs-reduction.co.uk/html/main_menu.html)
+
+- A short and interactive introductory course on the design of experiments focused on the benefits derived from an adequate design for the reduction of suffering in experimental animals.
+  
+- The "Statistical Analysis" section takes a brief tour of some experimental design models and their analysis.
+    
+- [A First Course in Design and Analysis of Experiments] (http://users.stat.umn.edu/~gary/Book.html)
+  
+- A book for an introductory course to design of experiments that, after being sold out in bookstores, the author decided to provide freely on the internet.
+    
+ - It takes a "traditional" approach to the subject and contains aspects that today would be approached differently, but it continues to be very interesting.
+    
+- The author updated the examples by implementing them in R.
+  
+   
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
