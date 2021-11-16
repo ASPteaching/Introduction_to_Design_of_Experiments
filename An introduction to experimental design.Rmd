@@ -55,9 +55,33 @@ source: Dtsch Arztebl Int 2009; 106(15): 262-8.
 
 DOI: https://doi.org/10.3238/arztebl.2009.0262 
 
-
 ---
 
+# Experimental Studies
+
+- Investigate changes in response variable,
+- by manipulating the levels of one or more treatment or independent variables.
+
+- Investigators play active role by (randomly) assigning each individual to each group.
+
+.center[
+<img align = "center" src = "images/ExperimentalStudies.png" width = "90%"> 
+]
+
+---
+# Observational Studies
+
+- Investigate changes in response variable,
+- due to different levels of an independent variable,
+
+- Assignment of subjects into each other group is outside the control of the investigator who can only observe the response variable in each group.
+
+.center[
+<img align = "center" src = "images/ObservationalStudies.png" width = "90%">
+]
+
+
+---
 # Why experiment?
 
 - A very common type of research study is _experimental studies_.
@@ -153,39 +177,49 @@ experimental unit.
 ---
 # What characterizes an experiment?
 
+<br>
 1. The treatments to be used
+
 2. The experimental units to be used
-3. The way treatment levels are assigned
-to the experimental units, that is, _the experimental design_
+
+3. The way treatment levels are assigned to the experimental units, that is, _the experimental design_
+
 4. Responses that are measured
 
 ---
 
 # What characterizes a good experimental design?
 
-- A good experimental design
 
-- Avoid biases or systematic errors
-- It allows a precise estimation of the response, which implies that the random error is as low as possible.
-- It allows an adequate estimation of the error.
-- It has wide validity: the experimental units are a sample of the population in question, so it is possible to extrapolate the conclusions of the sample to the population.
+- It __avoids biases__ or systematic errors
+
+- It __allows a precise estimation of the response__, which implies that the random error is as low as possible.
+
+- It __allows an adequate estimation of the error__.
+
+- It __has wide validity__: the experimental units are a sample of the population in question, so it is possible to extrapolate the conclusions of the sample to the population.
 
 ---
 
 # How to get a good design
 
+<br>
+
 - Try to apply some ideas, basic and somewhat redundant, but which, together, guarantee a good result.
 
 1. Rely on a _checklist_ of the experimental design.
+
 2. Apply _the scientific method in the appropriate study_.
+
 3. Be based on the basic principles of Experimental Design
-- Randomization, 
-- Replication, 
-- Local control.
+
+  - Randomization, 
+  - Replication, 
+  - Local control.
 
 - And also
-- Plan design and analysis at the same time,
-- Involve your favorite statistician from the beginning (or before) of the experiment.
+  - Plan design and analysis at the same time,
+  - Involve your favorite statistician from the beginning (or before) of the experiment.
 
 ---
 
