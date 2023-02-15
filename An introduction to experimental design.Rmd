@@ -1,11 +1,12 @@
 ---
 title: "An introduction to Experimental Design"
+subtitle: "With applications to bioinformatics"
 author: "Alex Sanchez-Pla"
 institute: "Departamento de Genética, Microbiología y Estadística (UB) <br> Unidad de Estadística y Bioinformática (VHIR)"
 date: "Versión `r Sys.Date()`"
 output:
   xaringan::moon_reader:
-    css: [default, metropolis, metropolis-fonts, "my.css"]
+    css: [default, metropolis, metropolis-fonts, "mycss.css"]
     lib_dir: libs
     nature:
       highlightStyle: github
@@ -15,9 +16,36 @@ editor_options:
   chunk_output_type: console
 ---
 
+<style type="text/css">
+.remark-slide-content {
+    font-size: 22px;
+    padding: 1em 4em 1em 4em;
+}
+.left-code {
+  color: #777;
+  width: 38%;
+  height: 92%;
+  float: left;
+}
+.right-plot {
+  width: 60%;
+  float: right;
+  padding-left: 1%;
+}
+</style>
+
+
 ```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE, echo=FALSE,
+        message=FALSE,warning=FALSE,
+        fig.dim=c(4.8, 4.5), fig.retina=2, out.width="100%")
+
 knitr::opts_chunk$set(echo = FALSE)
-options(htmltools.dir.version = FALSE)                      
+
+knitr::knit_hooks$set(mysize = function(before, options, envir) {
+  if (before) 
+    return(options$size)
+})
 ```
 
 # Outline
@@ -28,7 +56,7 @@ options(htmltools.dir.version = FALSE)
 
 ### 2) [Principles of experimental design](#Principles)
 
-### 3) [Basic types of experimental designs](#TypesDesenyos)
+### 3) [Basic types of experimental designs](#TiposDisenyos)
 
 ### 4) [Some resources](#Resources)
 
@@ -88,12 +116,12 @@ DOI: https://doi.org/10.3238/arztebl.2009.0262
 
 - The purposes of the experimental studies are diverse. For example, we could propose experiments to:
 
-1. Compare responses to different treatments.
-2. Determine the cause (s) of the response variation.
-3. Find the conditions in which the optimal response is reached,
-4. Develop a model to predict responses.
+  1. Compare responses to different treatments.
+  2. Determine the cause (s) of the response variation.
+  3. Find the conditions in which the optimal response is reached,
+  4. Develop a model to predict responses.
   
-- A characteristic of experimental versus observational studies is that, under the right conditions, the former are the only ones that allow establishing causal relationships.
+- A characteristic of experimental versus observational studies is that, _under the right conditions, the former are the only ones that allow establishing causal relationships_.
     
 ---
 # An example and basic ideas
@@ -455,7 +483,7 @@ $$ \sigma (TEC) ^ 2 < \sigma (BIO) ^ 2 $$
 
 class: inverse, middle, center
 
-name: Layout Types
+name: TiposDisenyos
 
 # Basic types of experimental designs
 
@@ -504,28 +532,28 @@ library (dplyr)
 t <- data.frame (5,4)
 
 t [1,1] <- "Treatments Design "
-t [1,2] <- "Error control D."
+t [1,2] <- "Error control Design"
 t [1,3] <- "Observational Design"
 t [1,4] <- "Design"
 
-t [2,1] <- "1 factor, (k niv.), r replicates/level"
-t [2,2] <- "Assign trat. 1 ... k  UE"
-t [2,3] <- "1 UU = 1 UO"
-t [, 4] <- "Completely Randomized"
+t [2,1] <- "1 factor, (k levels); replicates/level='r'"
+t [2,2] <- "Assign treatments 1 ... k to EU"
+t [2,3] <- "1 EU = 1 OU"
+t [2,4] <- "Completely Randomized"
 
-t [3,1] <- "1 factor (k level), 1 block (l level), k * l EU"
-t [3,2] <- "Assign trats. 1 ... k to EU, in each block"
+t [3,1] <- "1 factor (k levels); \n 1 block (l level), k*l EU"
+t [3,2] <- "Assign treatments 1 ... k to EU, in each block"
 t [3,3] <- "1 EU = 1 OU"
 t [3,4] <- "Completely randomized block design"
 
-t [4,1] <- "2 factors (k, l levels.), r replicates of each combination"
-t [4,2] <- "Assign each combination 1 ... k * l of treatments to EU"
+t [4,1] <- "2 factors (k, l levels); \n r replicates of each combination"
+t [4,2] <- "Assign each combination 1 ... k*l of treatments to EU"
 t [4,3] <- "1 EU = 1 OU"
 t [4,4] <- "Two-factor design with interaction"
 
-t [5,1] <- "1 Trat. (k niv), l repeated measures, r replicates/combination "
-t [5,2] <- "Assign trats. 1 ... k to individuals at time 1"
-t [5,3] <- "For each UE there are 'l' OU (temporal measurements)"
+t [5,1] <- "1 factor (k levels);\n l repeated measures; replicates/combination = 'r'"
+t [5,2] <- "Assign treatments 1 ... k to individuals at time 1"
+t [5,3] <- "For each EU there are 'l' OU (temporal measurements)"
 t [5,4] <- "Repeated Measures Design"
 
 colnames (t) <- t [1,]
@@ -550,12 +578,11 @@ knitr :: kable (t, "html")%>% kableExtra :: kable_styling ()
 
 # Experimental design and ANOVA
 
-- Sometimes the design of the experiment is confused with its analysis, which is carried out using Analysis of the Variance techniques.
+- Sometimes the design of the experiment is confused with its analysis, which is carried out using "Analysis of the Variance" or ANOVA techniques.
 
   - This is understandable, because when one defines the experimental design the way it will be analyzed is set. That is _they are related, but they are not the same_.
   - It is a common problem, in some books or statistics courses, which do not pay attention to how treatments were allocated between individuals and provide  the data already collected. 
     - This makes it difficult for students to realize that experimental design had been carried out before the data were collected.
-
 
 - Summarizing: Although the treatment design suggests a certain analysis model _the experimental design should not be confused with the analysis of the data collected in the experiment!_
 
@@ -575,20 +602,22 @@ kableExtra :: kable (d, "html")
 ```
 
 ---
+
 # Completely randomized design
 
 - Gene therapy experiment: compare four techniques to correct faulty genes
 
-- A: Normal gene inserted in a nonspecific location.
-- B: Abnormal gene exchanged for a normal gene.
-- C: Abnormal gene repaired by selective reversion mutation.
-- D: Regulation of a particular altered gene.
+  - A: Normal gene inserted in a nonspecific location.
+  - B: Abnormal gene exchanged for a normal gene.
+  - C: Abnormal gene repaired by selective reversion mutation.
+  - D: Regulation of a particular altered gene.
 
 - 20 genetically identical and modified mice, affected by the disease to be treated, are selected.
 
 - Treatments are randomized between the mice.
 
 - The response variable is _gene expression_.
+  - May be for a single or for multiple genes.
 
 ---
 
@@ -649,7 +678,7 @@ $$
 Y\_{ij}=\mu+\rho\_i+\tau\_j+e\_{ij}, i=1\dots k, \, j=1\dots l.
 $$
 - The analysis will usually be carried out by means of an analysis of variance (ANOVA) of two factors without interaction.
-- Obviously, if it is not possible to distribute the samples evenly between the blocks, the situation becomes complicated and we are faced with _unbalanced designs_
+- Obviously, if it is not possible to distribute the samples evenly between the blocks, the situation becomes complicated and we are often faced with _unbalanced designs_
 
 ---
 

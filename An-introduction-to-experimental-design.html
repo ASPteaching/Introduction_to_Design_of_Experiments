@@ -10,18 +10,48 @@
     <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
     <script src="libs/kePrint/kePrint.js"></script>
     <link href="libs/lightable/lightable.css" rel="stylesheet" />
-    <link rel="stylesheet" href="my.css" type="text/css" />
+    <link rel="stylesheet" href="mycss.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
+.title[
 # An introduction to Experimental Design
+]
+.subtitle[
+## With applications to bioinformatics
+]
+.author[
 ### Alex Sanchez-Pla
+]
+.institute[
 ### Departamento de Genética, Microbiología y Estadística (UB) <br> Unidad de Estadística y Bioinformática (VHIR)
-### Versión 2021-11-17
+]
+.date[
+### Versión 2023-02-15
+]
 
 ---
+
+
+&lt;style type="text/css"&gt;
+.remark-slide-content {
+    font-size: 22px;
+    padding: 1em 4em 1em 4em;
+}
+.left-code {
+  color: #777;
+  width: 38%;
+  height: 92%;
+  float: left;
+}
+.right-plot {
+  width: 60%;
+  float: right;
+  padding-left: 1%;
+}
+&lt;/style&gt;
 
 
 
@@ -34,7 +64,7 @@ class: center, middle, inverse, title-slide
 
 ### 2) [Principles of experimental design](#Principles)
 
-### 3) [Basic types of experimental designs](#TypesDesenyos)
+### 3) [Basic types of experimental designs](#TiposDisenyos)
 
 ### 4) [Some resources](#Resources)
 
@@ -94,12 +124,12 @@ DOI: https://doi.org/10.3238/arztebl.2009.0262
 
 - The purposes of the experimental studies are diverse. For example, we could propose experiments to:
 
-1. Compare responses to different treatments.
-2. Determine the cause (s) of the response variation.
-3. Find the conditions in which the optimal response is reached,
-4. Develop a model to predict responses.
+  1. Compare responses to different treatments.
+  2. Determine the cause (s) of the response variation.
+  3. Find the conditions in which the optimal response is reached,
+  4. Develop a model to predict responses.
   
-- A characteristic of experimental versus observational studies is that, under the right conditions, the former are the only ones that allow establishing causal relationships.
+- A characteristic of experimental versus observational studies is that, _under the right conditions, the former are the only ones that allow establishing causal relationships_.
     
 ---
 # An example and basic ideas
@@ -461,7 +491,7 @@ $$ \sigma (TEC) ^ 2 &lt; \sigma (BIO) ^ 2 $$
 
 class: inverse, middle, center
 
-name: Layout Types
+name: TiposDisenyos
 
 # Basic types of experimental designs
 
@@ -510,34 +540,37 @@ This depends on the resources, the available units, the desired precision, the h
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; Treatments Design  &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Error control D. &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Error control Design &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; Observational Design &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Completely Randomized &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 1 factor, (k niv.), r replicates/level &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Assign trat. 1 ... k  UE &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 1 UU = 1 UO &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 factor, (k levels); replicates/level='r' &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Assign treatments 1 ... k to EU &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 EU = 1 OU &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Completely randomized block design &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 1 factor (k level), 1 block (l level), k * l EU &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Assign trats. 1 ... k to EU, in each block &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 factor (k levels); 
+ 1 block (l level), k*l EU &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Assign treatments 1 ... k to EU, in each block &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; 1 EU = 1 OU &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Two-factor design with interaction &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 2 factors (k, l levels.), r replicates of each combination &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Assign each combination 1 ... k * l of treatments to EU &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2 factors (k, l levels); 
+ r replicates of each combination &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Assign each combination 1 ... k*l of treatments to EU &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; 1 EU = 1 OU &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Repeated Measures Design &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 1 Trat. (k niv), l repeated measures, r replicates/combination &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Assign trats. 1 ... k to individuals at time 1 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; For each UE there are 'l' OU (temporal measurements) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 factor (k levels);
+ l repeated measures; replicates/combination = 'r' &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Assign treatments 1 ... k to individuals at time 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; For each EU there are 'l' OU (temporal measurements) &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -557,12 +590,11 @@ This depends on the resources, the available units, the desired precision, the h
 
 # Experimental design and ANOVA
 
-- Sometimes the design of the experiment is confused with its analysis, which is carried out using Analysis of the Variance techniques.
+- Sometimes the design of the experiment is confused with its analysis, which is carried out using "Analysis of the Variance" or ANOVA techniques.
 
   - This is understandable, because when one defines the experimental design the way it will be analyzed is set. That is _they are related, but they are not the same_.
   - It is a common problem, in some books or statistics courses, which do not pay attention to how treatments were allocated between individuals and provide  the data already collected. 
     - This makes it difficult for students to realize that experimental design had been carried out before the data were collected.
-
 
 - Summarizing: Although the treatment design suggests a certain analysis model _the experimental design should not be confused with the analysis of the data collected in the experiment!_
 
@@ -575,53 +607,58 @@ This depends on the resources, the available units, the desired precision, the h
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; Treatments Design  &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Error control D. &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Error control Design &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; Analysis &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Completely Randomized &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 1 factor, (k niv.), r replicates/level &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Assign trat. 1 ... k  UE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 factor, (k levels); replicates/level='r' &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Assign treatments 1 ... k to EU &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; 1-way ANOVA &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Completely randomized block design &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 1 factor (k level), 1 block (l level), k * l EU &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Assign trats. 1 ... k to EU, in each block &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 factor (k levels); 
+ 1 block (l level), k*l EU &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Assign treatments 1 ... k to EU, in each block &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; 2-way ANOVA without interaction &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Two-factor design with interaction &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 2 factors (k, l levels.), r replicates of each combination &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Assign each combination 1 ... k * l of treatments to EU &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2 factors (k, l levels); 
+ r replicates of each combination &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Assign each combination 1 ... k*l of treatments to EU &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; 3-way ANOVA with interaction &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Repeated Measures Design &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 1 Trat. (k niv), l repeated measures, r replicates/combination &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Assign trats. 1 ... k to individuals at time 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 factor (k levels);
+ l repeated measures; replicates/combination = 'r' &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Assign treatments 1 ... k to individuals at time 1 &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; ANOVA of repeated measures &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
 ---
+
 # Completely randomized design
 
 - Gene therapy experiment: compare four techniques to correct faulty genes
 
-- A: Normal gene inserted in a nonspecific location.
-- B: Abnormal gene exchanged for a normal gene.
-- C: Abnormal gene repaired by selective reversion mutation.
-- D: Regulation of a particular altered gene.
+  - A: Normal gene inserted in a nonspecific location.
+  - B: Abnormal gene exchanged for a normal gene.
+  - C: Abnormal gene repaired by selective reversion mutation.
+  - D: Regulation of a particular altered gene.
 
 - 20 genetically identical and modified mice, affected by the disease to be treated, are selected.
 
 - Treatments are randomized between the mice.
 
 - The response variable is _gene expression_.
+  - May be for a single or for multiple genes.
 
 ---
 
@@ -682,7 +719,7 @@ $$
 Y\_{ij}=\mu+\rho\_i+\tau\_j+e\_{ij}, i=1\dots k, \, j=1\dots l.
 $$
 - The analysis will usually be carried out by means of an analysis of variance (ANOVA) of two factors without interaction.
-- Obviously, if it is not possible to distribute the samples evenly between the blocks, the situation becomes complicated and we are faced with _unbalanced designs_
+- Obviously, if it is not possible to distribute the samples evenly between the blocks, the situation becomes complicated and we are often faced with _unbalanced designs_
 
 ---
 
@@ -855,6 +892,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

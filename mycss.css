@@ -1,26 +1,58 @@
-/*METROPOLIS-FONTS*/
+/*FONTS*/
 
-@import url(https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,500,500i,700,700i);
-@import url(https://cdn.rawgit.com/tonsky/FiraCode/1.204/distr/fira_code.css);
+@import url(https://fonts.googleapis.com/css?family=Fira+Sans);
+@import url(https://fonts.googleapis.com/css?family=Fira+Code);
 
 body {
-  font-family: 'Fira Sans','Droid Serif', 'Palatino Linotype', 'Book Antiqua', 'Palatino', 'Microsoft YaHei', 'Songti SC', serif;
+  font-family: 'Fira Sans', serif;
+  font-size: 120%;
 }
+
+.huge{font-size: 160%}.
+.large{ font-size: 130% }
+.small{ font-size: 70% }
+.tiny{font-size: 40%}.
 
 .remark-code, .remark-inline-code {
-  font-family: 'Fira Code', 'Lucida Console', Monaco, monospace;
-  font-size: 90%;
+  font-family: 'Fira Code', serif;
+  font-size: 80%;
+}
+.huge .remark-code { /*Change made here*/
+  font-size: 200% !important;
+}
+.smallcode .remark-code { /*Change made here*/
+  font-size: 125% !important;
 }
 
+/*COLORS*/
+
+.green {
+  color: green;
+}
+
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+  float: left;
+  width: 50%;
+  padding: 0px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+	
 /*METROPOLIS*/
 
 .remark-slide-content {
   background-color: #FFFFFF;
-  border-top: 80px solid #942E80;
+  border-top: 80px solid #336B87;
   font-size: 20px;
   font-weight: 300;
   line-height: 1.5;
-  padding: 1em 2em 1em 2em
+  padding: 1em 2em 1em 2em;
 }
 
 .title-slide .inverse .remark-slide-content {
@@ -28,12 +60,12 @@ body {
 }
 
 .inverse {
-  background-color: #336b87; /*#23373B*/
+  background-color: #336B87;
   text-shadow: none;
 }
 
 .remark-slide-content > h1 {
-  font-family: 'Fira Sans';
+  font-family: 'Fira Sans', serif;
   font-weight: normal;
   font-size: 45px;
   margin-top: -95px;
@@ -75,10 +107,10 @@ position: absolute;
 
 .title-slide {
   background-color: #FFFFFF;
-  border-top: 60px solid #FFFFFF;
-  background-image: url("images/TitleSlide.png");
-  background-position: 100% 100%; 
-  background-size: 100%;
+  border-top: 80px solid #FFFFFF;
+  background-image: url("images/allLogos.png");
+  background-position: 10% 0%; 
+  background-size: 90%;
 }
 
 .title-slide > h1  {
@@ -110,38 +142,17 @@ position: absolute;
   margin-bottom: -30px;
 }
 
-.title-slide.remark-slide-content:before{
-  position: absolute;
-  content:url("uoclogo1.png");
-  height:60px;
-}
-
-.my-logo-right {
-content: "";
-    position: absolute;
-    top: 15px;
-    right:   8px;
-    height: 40px;
-    width: 120px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-image: "uoclogo1.png";
-}
-
 .remark-slide-number {
   font-size: 13pt;
   font-family: 'Fira Sans';
   color: #272822;
   opacity: 1;
-  margin-bottom: 2px;
 }
-
 .inverse .remark-slide-number {
   font-size: 13pt;
   font-family: 'Fira Sans';
   color: #FAFAFA;
   opacity: 1;
-  margin-bottom: 2px;
 }
 
 /* turns off slide numbers for title page: https://github.com/gnab/remark/issues/298 */
@@ -327,46 +338,16 @@ th, td { padding: 5px; }
 }
 
 a, a > code {
-  color: #f38620; /*default: rgb(249, 38, 114); || sets color of links */
+  color: #EA8620; /*default: rgb(249, 38, 114); || sets color of links */
   text-decoration: none; /* turns off background coloring of links */
 }
 
-.footnote {
+.center2 {
+  margin: 0;
   position: absolute;
-  bottom: 2em;
-  padding-right: 4em;
-  font-size: 65%;
-}
-
-/*FOOTER*/
-
-/*
-div.my-footer {
-content: "";
-    position: absolute;
-    bottom: 1px;
-    right:  75px;
-    height: 50px;
-    width: 250px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-image: url("pix/footer.png");
-}
-*/
-
-div.my-footer {
-    background-color: #272822;
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    height: 15px;
-    width: 100%;
-}
-div.my-footer span {
-    font-size: 8pt;
-    color: #F7F8FA;
-    position: absolute;
-    left: 15px;
-    bottom: 1.5px;
+  top: 52%;
+  left: 75%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
