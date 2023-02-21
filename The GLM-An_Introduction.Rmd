@@ -567,7 +567,9 @@ cont.matrix
 
 - Once we have the design and contrast matrices we can proceed to estimate the model fit the contrasts and check the results
 
-- Here we first need the data.
+- Data can be obtained from the open repository Gene Expression Omnibus but, for simplicity, it has been downloaded and prepared for the analysis.
+
+- They are available at the sub-directory "omicsData"
 
 ```{r readData}
 dataLocation<- "https://raw.githubusercontent.com/alexsanchezpla/Ejemplo_de_MDA_con_Bioconductor/master/results/Datos.Normalizados.Filtrados.csv2"
