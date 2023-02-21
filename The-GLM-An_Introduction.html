@@ -4,11 +4,13 @@
     <title>An introduction to the general linear model</title>
     <meta charset="utf-8" />
     <meta name="author" content="Alex Sanchez-Pla" />
-    <meta name="date" content="2023-02-20" />
+    <meta name="date" content="2023-02-21" />
     <script src="libs/header-attrs-2.20/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
     <link rel="stylesheet" href="mycss.css" type="text/css" />
   </head>
   <body>
@@ -28,7 +30,7 @@ class: center, middle, inverse, title-slide
 ### Departamento de Genética, Microbiología y Estadística (UB) <br> Unidad de Estadística y Bioinformática (VHIR)
 ]
 .date[
-### 2023-02-20
+### 2023-02-21
 ]
 
 ---
@@ -556,7 +558,7 @@ http://www.ncbi.nlm.nih.gov/geo/gds/profileGraph.cgi?gds=1329
 
 - Obviously this is an observational study but its analysis can be done using a linear model approach as well.
 
-- We will usualñy proceed in three steps:
+- We will usually proceed in three steps:
 
 1. Identify the experimental factors and their levels.
 2. Write the design matrix associated with this study design.
@@ -572,25 +574,104 @@ http://www.ncbi.nlm.nih.gov/geo/gds/profileGraph.cgi?gds=1329
 
 # Defining the groups
 
+- An easy way to define the study groups consists of preparing a text file where these are established.
 
 
 ```r
-library (limma)
-targetsLocation&lt;- "https://raw.githubusercontent.com/alexsanchezpla/Ejemplo_de_MDA_con_Bioconductor/master/data/targets.txt"
-targets&lt;- read.delim(targetsLocation, row.names=1)
-head(targets)
+url &lt;- "https://raw.githubusercontent.com/ASPteaching"
+repo &lt;- "Introduction_to_Design_of_Experiments"
+folder &lt;- "main/omicsData/dataset_2_Breast_cancer_GSE1561/data"
+dataFile &lt;- "BreastCancerGSE1561.csv"
+targetsFile &lt;- "targets.txt"
+targetsFileName &lt;- paste(url, repo, folder, targetsFile, sep="/")
 ```
 
-```
-##                Sample             Ids SampleIDs Group Apocrine.grade AR.repeat.length
-## GSM26878.CEL GSM26878 PF14 EnPnT2N1G2      PF14     A              3               18
-## GSM26883.CEL GSM26883 PF19 EnPuT4N0Gu      PF19     A              2               18
-## GSM26887.CEL GSM26887 PF23 EnPnT2N0G2      PF23     A              3               18
-## GSM26903.CEL GSM26903 PF39 EnPuT4N0Gu      PF39     A              3               17
-## GSM26910.CEL GSM26910 PF46 EnPnT4N1G3      PF46     A              3               19
-## GSM26888.CEL GSM26888 PF24 EnPnTiN0G3      PF24     B              2               NA
+---
+# The `targets`file
+
+
+```r
+library(magrittr)
+targets &lt;-read.table(targetsFileName, row.names=1, head=T)
 ```
 
+&lt;small&gt;
+
+```r
+kableExtra::kable(head(targets[,1:6]), n=7) %&gt;% kableExtra::kable_styling()
+```
+
+&lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; fileName &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Sample &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Ids &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; SampleIDs &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Group &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Apocrine.grade &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; GSM26878.CEL &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; GSM26878 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF14 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; EnPnT2N1G2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF14 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; GSM26883.CEL &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; GSM26883 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF19 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; EnPuT4N0Gu &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF19 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; GSM26887.CEL &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; GSM26887 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF23 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; EnPnT2N0G2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF23 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; GSM26903.CEL &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; GSM26903 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF39 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; EnPuT4N0Gu &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF39 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; GSM26910.CEL &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; GSM26910 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF46 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; EnPnT4N1G3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF46 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; A &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; GSM26888.CEL &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; GSM26888 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF24 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; EnPnTiN0G3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; PF24 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; B &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+_Showing only first 7 rows_
+&lt;/small&gt;
 ---
 
 # Creating the design matrix
@@ -615,22 +696,22 @@ print(design)
 ```
 
 ```
-##          A B L
-## GSM26878 1 0 0
-## GSM26883 1 0 0
-## GSM26887 1 0 0
-## GSM26903 1 0 0
-## GSM26910 1 0 0
-## GSM26888 0 1 0
-## GSM26889 0 1 0
-## GSM26892 0 1 0
-## GSM26898 0 1 0
-## GSM26906 0 1 0
-## GSM26879 0 0 1
-## GSM26896 0 0 1
-## GSM26897 0 0 1
-## GSM26907 0 0 1
-## GSM26911 0 0 1
+##      A B L
+## PF14 1 0 0
+## PF19 1 0 0
+## PF23 1 0 0
+## PF39 1 0 0
+## PF46 1 0 0
+## PF24 0 1 0
+## PF25 0 1 0
+## PF28 0 1 0
+## PF34 0 1 0
+## PF42 0 1 0
+## PF15 0 0 1
+## PF32 0 0 1
+## PF33 0 0 1
+## PF43 0 0 1
+## PF47 0 0 1
 ```
 ]
 ---
@@ -638,13 +719,14 @@ print(design)
 # Another way to create the design matrix 
 
 .pull-left[
-
+&lt;small&gt;
 
 ```r
 design2 &lt;-model.matrix(~ 0+targets$Group)
 colnames(design2)&lt;-c("A", "B", "L")
 rownames(design2)&lt;-  targets$Sample
 ```
+&lt;/small&gt;
 ]
 
 .pull-right[
@@ -654,22 +736,22 @@ print(design2)
 ```
 
 ```
-##          A B L
-## GSM26878 1 0 0
-## GSM26883 1 0 0
-## GSM26887 1 0 0
-## GSM26903 1 0 0
-## GSM26910 1 0 0
-## GSM26888 0 1 0
-## GSM26889 0 1 0
-## GSM26892 0 1 0
-## GSM26898 0 1 0
-## GSM26906 0 1 0
-## GSM26879 0 0 1
-## GSM26896 0 0 1
-## GSM26897 0 0 1
-## GSM26907 0 0 1
-## GSM26911 0 0 1
+##      A B L
+## PF14 1 0 0
+## PF19 1 0 0
+## PF23 1 0 0
+## PF39 1 0 0
+## PF46 1 0 0
+## PF24 0 1 0
+## PF25 0 1 0
+## PF28 0 1 0
+## PF34 0 1 0
+## PF42 0 1 0
+## PF15 0 0 1
+## PF32 0 0 1
+## PF33 0 0 1
+## PF43 0 0 1
+## PF47 0 0 1
 ## attr(,"assign")
 ## [1] 1 1 1
 ## attr(,"contrasts")
@@ -683,6 +765,7 @@ print(design2)
 
 
 ```r
+library(limma)
 cont.matrix &lt;- makeContrasts (
   AvsB = B-A,
   AvsL = L-A,
@@ -701,16 +784,19 @@ cont.matrix
 
 ---
 
-# Fitting the model and estimating the contrasts
+# Data for the analysis
 
-- Once we have the design and contrast matrices we can proceed to estimate the model fit the contrasts and check the results
+- Data can be obtained from the open repository Gene Expression Omnibus but, for simplicity, it has been downloaded and prepared for the analysis.
 
-- Here we first need the data.
+- They are also available remotely at the sub-directory "omicsData"
 
 
 ```r
-dataLocation&lt;- "https://raw.githubusercontent.com/alexsanchezpla/Ejemplo_de_MDA_con_Bioconductor/master/results/Datos.Normalizados.Filtrados.csv2"
-dataMatrix &lt;- read.csv2(dataLocation, row.names = 1)
+dataFile &lt;- "BreastCancerGSE1561.csv"
+dataFileName &lt;- paste(url, repo, folder, dataFile, sep="/")
+
+dataMatrix &lt;- read.csv(dataFileName, row.names=1)
+
 colnames(dataMatrix)==rownames(targets)
 ```
 
@@ -723,40 +809,96 @@ dim(dataMatrix)
 ```
 
 ```
-## [1] 6201   15
+## [1] 22283    15
 ```
 
 ---
 
 # Fit the model and the contrasts
 
+- Once we have the data, the design matrix and the contrast matrix we can proceed to estimate the model,  fit the contrasts and check the results
+
 
 ```r
-require(limma)
 fit&lt;-lmFit(dataMatrix, design)
 fit.main&lt;-contrasts.fit(fit, cont.matrix)
 fit.main&lt;-eBayes(fit.main)
 ```
 
-----
+- This creates an object, which is called here `fit.main` from where distinct results can be extracted.
+
+---
 
 # Results are in "topTables"
+
+- For each comparison in the contrast matrix a "top Table" can be generated showing features sorted from most to least differentially expressed, based on the test p-value.
 
 
 ```r
 topTab_AvsB &lt;- topTable (fit.main, number=nrow(fit.main), coef="AvsB", adjust="fdr")
-head(topTab_AvsB)
+kableExtra::kable(head(topTab_AvsB, n=5)) %&gt;% kableExtra::kable_styling()
 ```
 
-```
-##                 logFC  AveExpr          t      P.Value    adj.P.Val         B
-## 204667_at   -3.038344 8.651157 -14.338491 5.758201e-11 3.570660e-07 14.654208
-## 215729_s_at  3.452290 6.137595  12.805722 3.406870e-10 1.056300e-06 13.162737
-## 220192_x_at -3.016315 9.521883 -10.852451 4.304210e-09 6.846708e-06 10.938163
-## 214451_at   -5.665059 7.432823 -10.833890 4.416519e-09 6.846708e-06 10.915058
-## 217528_at   -5.622086 6.763101  -9.670746 2.379541e-08 2.951106e-05  9.384907
-## 217284_x_at -4.313116 9.133307  -9.530910 2.942044e-08 3.040603e-05  9.189568
-```
+&lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; logFC &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; AveExpr &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; t &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; P.Value &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; adj.P.Val &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; B &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 204667_at &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -3.038344 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8.651157 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -17.65663 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.40e-06 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13.610350 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 215729_s_at &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.452290 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.137595 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13.67095 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.08e-05 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11.214963 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 202579_x_at &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.293975 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.226164 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12.26570 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.24e-05 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10.115252 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 209787_s_at &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.023113 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.871298 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12.05888 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5.24e-05 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.939472 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 214243_s_at &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -5.015130 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.278980 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -11.47539 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6.75e-05 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9.422507 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
 ```r
 # topTab_AvsL &lt;- topTable (fit.main, number=nrow(fit.main), coef="AvsL", adjust="fdr"); head(topTab_AvsL)
@@ -767,18 +909,23 @@ head(topTab_AvsB)
 
 # Volcano plots provide visualization
 
+.pull-left[
+- A volcano plot shows, for each comparison
+  - the magnitude of the change ("biological significance") vs
+  - the "statistical significance" (-log p-value)
+]
+
+.pull-right[
+.center[
 
 ```r
-volcanoplot(fit.main, coef="AvsB", highlight=10)
+volcanoplot(fit.main, coef="AvsB", 
+            highlight=10)
 ```
 
-![](The-GLM-An_Introduction_files/figure-html/showResults-1.png)&lt;!-- --&gt;
-
-```r
-# volcanoplot(fit.main, coef="AvsL", highlight=10)
-# volcanoplot(fit.main, coef="BvsL", highlight=10)
-```
-
+&lt;img src="The-GLM-An_Introduction_files/figure-html/showResults-1.png" width="100%" /&gt;
+]
+]
 ---
 
 class: inverse, middle, center

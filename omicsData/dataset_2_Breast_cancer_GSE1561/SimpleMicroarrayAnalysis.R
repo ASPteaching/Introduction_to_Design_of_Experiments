@@ -20,6 +20,16 @@ Biobase::write.exprs(eset_rma, file=file.path(dataDir, "BreastCancerGSE1561.csv"
             sep=",", dec=".")
 class(eset_rma)
 dim(exprs(eset_rma))
+
+## ----Data from the web
+
+url <- "https://raw.githubusercontent.com/ASPteaching"
+repo <- "Introduction_to_Design_of_Experiments"
+folder <- "main/omicsData/dataset_2_Breast_cancer_GSE1561/data"
+file <- "BreastCancerGSE1561.csv"
+fileName <- paste(url, repo, folder, file, sep="/")
+BreastCancerGSE1561 <- read.csv(fileName, row.names=1)
+
 BreastCancerGSE1561 <- read.csv(file.path(dataDir, "BreastCancerGSE1561.csv"),
                                 row.names=1)
 targets<- read.table(file=file.path(dataDir, "targets.txt"), 
