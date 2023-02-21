@@ -1,8 +1,7 @@
 ## ----librerias, message=FALSE--------------------------------------------
 installifnot <- function (pckgName){
 if(!(require(pckgName, character.only=TRUE))){
-  source("http://Bioconductor.org/biocLite.R")
-  biocLite(pckgName)
+  BiocManager::install(pckgName)
   }
 }
 installifnot("hgu133a.db")
@@ -11,14 +10,18 @@ installifnot("annotate")
 
 ## ---- preparaDirectorios-------------------------------------------------
 workingDir <-getwd()
-dataDir <-file.path(workingDir, "data")
-resultsDir <- file.path(workingDir,"results")
+dataDir <-file.path(workingDir, "omicsData/dataset_2_Breast_cancer_GSE1561/data")
+resultsDir <- file.path(workingDir,"omicsData/dataset_2_Breast_cancer_GSE1561")
 setwd(workingDir)
 
 ## ----leerDatos-----------------------------------------------------------
 load(file.path(dataDir, "datos.normalizados.Rda"))
+Biobase::write.exprs(eset_rma, file=file.path(dataDir, "BreastCancerGSE1561.csv"),
+            sep=",", dec=".")
 class(eset_rma)
 dim(exprs(eset_rma))
+BreastCancerGSE1561 <- read.csv(file.path(dataDir, "BreastCancerGSE1561.csv"),
+                                row.names=1)
 targets<- read.table(file=file.path(dataDir, "targets.txt"), 
                      head=TRUE, sep="\t")
 
@@ -43,7 +46,7 @@ print(cont.matrix)
 
 ## ---- linearmodelfit-----------------------------------------------------
 require(limma)
-fit<-lmFit(eset_rma, design)
+fit<-lmFit(BreastCancerGSE1561, design)
 fit.main<-contrasts.fit(fit, cont.matrix)
 fit.main<-eBayes(fit.main)
 
