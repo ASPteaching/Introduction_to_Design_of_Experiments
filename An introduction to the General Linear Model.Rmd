@@ -52,10 +52,11 @@ writeLines(doc, file_name)
 # Outline
 
 .columnwide[
-  ### 1) [A recap on linear models](#review)
-  ### 2) [Linear models with R](#lm)
-  ### 3) [Linear models for omics data](#limma)
-  ### 4) [Exercises](#exercises)
+  ### 1) [The general linear models](#review)
+  ### 2) [Some examples of simple linear models](#examples)
+  ### 3) [Linear models with R](#lm)
+  ### 4) [Linear models for omics data](#limma)
+  ### 5) [Exercises](#exercises)
 ]
 
 ---
@@ -83,7 +84,7 @@ name: review
 
 ---
 
-# Regression,  ANOVA are linear models
+# Regression or  ANOVA are linear models
 
 - Linear models provide a flexible way to modelling relations and building explanatory or predictive models, as seen in **linear regression**.
 
@@ -92,8 +93,8 @@ Y\_i = \beta\_0 + \beta\_1 \times X\_{1i} + \beta\_2 \times X\_{2i}  + \dots+ \e
 $$
 
 - But they also provide a convenient setting to 
-      - describe experimental designs and 
-      - to analyze data that has been obtained from experiments performed according to the design they describe, as seen in **ANOVA**.
+      - **describe** experimental designs and 
+      - to **analyze data** that has been obtained from experiments performed according to the design described, as seen in **ANOVA**.
     
 $$
 Y\_{ij}=\mu\_i+e\_{ij}=\mu+\tau\_i+e\_{ij}, \quad i=1\dots k,\quad j=1\dots r.
@@ -101,10 +102,91 @@ $$
 
 ---
 
-# Linear models. An example
+# The General Linear model
+
+- This capability of linear models to embrace *apparently distinct* models leads to introduce the notion o General Linear Models*.
+
+- GLMs constitute a versatile statistical framework used to analyze relationships between *dependent* (or *response* or *predicor*) variables and one or more independent (or *explanatory* or *predictive*) variables. 
+- A GLM can be written as:
+
+$$Y_i = \beta_0 + \beta_1 X_{i1} + \beta_2 X_{i2} + \ldots + \beta_p X_{ip} + \epsilon_i$$
+
+  - where, if there are $i=1,\dots,n$ observations, 
+    - $Y_i$ represents the dependent variable for the $i$th observation, 
+    - $X_{ij}$ represents the $j$th independent variable for the $i$th observation, 
+    - $\beta_0$ represents the intercept, 
+    - $\beta_1, \beta_2, \ldots, \beta_p$ represent the coefficients for each independent variable, and 
+    - $\epsilon_i$ represents the error term for the $i$th observation. 
+
+---
+
+
+# Why is the GLM so "General"? 
+
+- The *generality* of the GLM comes from the fact that it can be used to describe, and analyze in a somehow unified form, a variety of problems.
+
+- Although one may think that, assuming that a relation is linear, is an excessive simplification, this approach
+  - is thoroughly used,
+  - is very successful.
+  
+- Indeed, it can be shown that many common statistical models can be re-written as linear models:
+
+    - [Common statistical tests are linear models](https://lindeloev.github.io/tests-as-linear/)
+
+
+---
+
+# The GLM has multiple extensions
+
+- Apart of its extensive use "as is",
+- The general linear model can be extended in multiple directions
+  - Generalized linear models
+  - Mixed linear and non linear models
+  - etc.
+  
+---
+
+# Matrix form for the general linear model
+  
+- The equation expressing the linear relationship between the dependent variable and multiple independent variables  can be written in a *compact form*, that is, for all individuals at once, using matrix notation as:
+
+$$
+Y = X\beta + \epsilon
+$$
+  - This notation will be useful later when we discuss linear models for omics data analysis.
+
+---
+
+class: inverse, middle, center
+
+name: review
+
+# Some examples of linear models <a id="examples"></a>
+
+
+---
+
+# t-test and ANOVA as GLMs
 
 - Consider a study comparing __two diets__ in mice, a "standard" vs a "high-fat" one.
 
+- The main goal of the study are:
+
+  - To *estimate* the mean weight of mice after having been nurrished with each diet
+  - To *compare* the difference in weight between the standard and "high fat" diets.
+  
+- The usual approach for this problem can be:  
+  - consider two variables, representing the weight of mice nurrished by ech diet 
+      - $X_1\sim N(\mu_1, \sigma_1)$, $X_2\sim N(\mu_2, \sigma_2)$, or, without assuming normality
+      - $X_1$, $X_2$ belong to some continuous distribution.
+    - And test the hypothesis 
+      $H_0: \mu_1=\mu_2$ with a $t-test$ or a non parametric one, such as Wilcoxon's test.
+  
+---
+
+# Re-write the problem as a linear model
+
+- An alternative approach may come by re-writing the problem as a linear model.
 - If _we consider that the weight of the animals is a linear function of the diets_, the following linear model can be written:
 
 $$ 
@@ -116,22 +198,8 @@ $$
   - $x_i = 1$ when mouse $i$ receives the high fat diet and <br>  $x_i = 0$  when it receives the standard diet.
       <!-- - We call thees variables *indicator variables* since they simply indicate if the experimental unit had a certain characteristic or not. -->
       
-- The main goal of the study are:
 
-  - To *estimate* the mean weight of mice after having been nurrished with each diet
-  - To *compare* the difference in weight between the standard and "high fat" diets.
 
----
-
-# The general linear model
-
-![](images/linMod3.png)
-
-- Linear models assume a linear relation between a _response_ "dependent") variable, and one or more _explanatory_ (or "independent") variables(s).
-
-- Many common problems can be re-written as linear models.
-
-  [Common statistical tests are linear models](https://lindeloev.github.io/tests-as-linear/)
 
 ---
 
@@ -655,7 +723,7 @@ name: exercises
 
 # Exercises on linear models for omics
 
-- You can go through the exercises in the document "Exercises on linear models for microarrays"
+- You can go through the exercises in the document [Exercises on linear models for microarrays](https://github.com/ASPteaching/Introduction_to_Design_of_Experiments/blob/56a927d76a67378ca08985864fc998df35a61c43/Exercices%20in%20linear%20models%20and%20experimental%20design.pdf)
 
   - Start by reading the experiment description
   - Postulate the type of experimental design
