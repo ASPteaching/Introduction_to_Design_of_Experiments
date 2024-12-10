@@ -1,0 +1,110 @@
+---
+title: "Linear Models for Differential Expression"
+author: "Alex Sanchez"
+date: "`r Sys.Date()`"
+format:
+  html:
+    theme:
+      light: cerulean
+      dark: textmate
+    toc: true
+    toc-depth: 2
+---
+
+```{r setup, include=FALSE}
+require(knitr)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, comment = NA, prompt = TRUE, tidy = FALSE, fig.width = 7, fig.height = 7, fig_caption = TRUE,cache=FALSE)
+Sys.setlocale("LC_TIME", "C")
+```
+
+```{r packages, include=FALSE}
+# require(devtools)
+# if(!require(installifnot)) install_github("uebvhir/installifnot")
+
+library("bibtex"):
+```
+
+# Introducció
+
+Tradicionalment, en els cursos [d'estadística] al VHIR presentem una sèrie de temes relacionats que no solem relacionar. Aquesys són:
+
+- Una introducció al disseny d'experiments
+  - Conceptes
+  - Principis del Disseny Experimental
+  - Tipus de Disseny
+- Introducció a l'ANOVA d'un i potser de dos factors 
+  - *Relacionat amb els tipus de disseny*
+- Regressió lineal simple i múltiple
+  - *Relacionat amb l'ANOVA si es fa inferència*
+- Introducció als biomarcadors
+  - *Relacionable amb els tests d'hipòtesis i per tant amb el disseny d'experiments i l'ANOVA*
+- Construcció i validació de biomarcadors
+  - Construcció de biomarcadors. Relacionat amb
+    - Les proves d'hipòtesis
+      - I el problema del multiple testing
+    - El disseny d'experiments i la seva representació amb models lineals
+    - L'anàlisis dels resultats dels experiments fent servir la teoría dels models lineals (i l'ANOVA)
+  - Validació de biomarcadors. Relacionat amb
+    - La qualitat dels tests (la capacitat de proporcionar resultats "+" i "-" correctamente
+      - Sensibilitat especificitat i corbes ROC
+    - Els models predictius o de classificació construits amb els biomarcadors seleccionats
+      - Com fer això
+      - COm validar-ho. Per exemple amb un 
+          - vtest/train sets
+          - Cross validació interna
+  
+- Selecció de gens (o altres trets) diferencialment expressats amb limma
+  - Models lineals *Relacionat amb els dissenys, l'ANOVA i la regressió*
+  - Matriu de disseny i de contrastos
+  - Ajust de p-valors *Relacionat amb els tests d'hipòtesis i les taules de decisió
+
+No costa entendre perquè, quan es te poc temps, es relacionen poques coses. Ara intentarem canviar això una mica.
+
+
+# Introduction and Outline
+
+Aquí volem posar dues coses sobre la taula
+
+- Els models lineals com a generalització del test-t, ANOVA i tot d'altres coses.
+[Common statistical tests are linear models](https://lindeloev.github.io/tests-as-linear/)
+- Els models lineals de limma per analitzar microarrays
+- I si pogues ser els GLM de DEGSeq
+
+# Continguts
+
+-  Introducing the problem 
+-  From experimental design to linear models 
+-  The general linear model 
+-  Comparison of 2 groups = t-test 
+-  Comparison of three groups (ANOVA) 
+-  Estimating a linear model 
+-  Matrix notation for linear models 
+-  Computers prefer matrices 
+-  Two groups in matrix notation 
+-  Three groups in matrix notation 
+-  Fitting linear models 
+-  Significance testing with linear models. 
+-  How linear models are often used 
+-  Linear models and the Design Matrix 
+-  A matrix representation 
+-  Fitting the model 
+-  Fitting linear models in R 
+-  Expressing experimental designs using R formula 
+-  Model matrix for two groups 
+-  Model matrix for two groups (2) 
+-  model.matrix requires factors 
+-  The role of the intercept term 
+-  Design matrix for more than 2 groups 
+-  An alternative parametrization 
+-  Design matrices for more complex designs 
+-  Design matrix for designs with interaction term 
+-  Linear models for microarray data
+
+
+Hi ha diverses fonts que podem fer servir, però ho voldria explicar tot en un dia:
+
+- [HarvardX Biomedical Data Science Open Online Training](http://rafalab.github.io/pages/harvardx.html)
+- [Common statistical tests are linear models](https://lindeloev.github.io/tests-as-linear/)
+- [Penn State Course's om Genomics Data Analysis, Lesson 7: Linear Models for Differential Expression in Microarray Studies](https://online.stat.psu.edu/stat555/node/12/)
+- [Introduction 2 Data Science](https://rafalab.github.io/dsbook/linear-models.html#lse)
+
