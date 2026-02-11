@@ -110,7 +110,7 @@ name: Introduction
 
 # An example and basic ideas
 
-- Goal: investigate the effect of a drug/therapy to prevent the development of diabetes in genetically modified mice.
+- A study is perfoprmed to investigate the effect of a drug/therapy to prevent the development of diabetes in genetically modified mice.
 - Effect will be tested and compared with that of a placebo.
 - Effectiveness of the treatment may be affected by the diet of the animal, so distinct diets ("D1", "D2", "D3") are considered
 - Mice randomly selected will receive a distinct combination of drug/placebo and D1/D2/D3 diet.
@@ -374,27 +374,40 @@ name: Principles
 - Patient strength  **is confounded**  with treatment differences. 
   - The drug therapy would likely have a lower survival rate because it is getting the weakest patients, even if the drug therapy is every bit as good as the surgery.
 
+---
+# Exercise
+
+- Consider the experiment where we compare 
+  - a treatement and a placebo
+  - in combination with three diets
+  - using a total of 18 mice
+  
+1. Propose and apply a method to randomize mice among treatments and diets.
+
+2. Consider a sequential or a simultaneous approach. Would the results differ?
+
+3. Choose an experimental study and try to think on how randomization should be performed.
 
 ---
 
 # 2. Replication
 
-- There is general agreement on the need to apply each treatment independently to several experimental units.
+- There is general agreement on the need *to apply each treatment independently to several ("more than ...") experimental units*.
 
 - This ... 
   - Helps to establish the reproducibility of the results.
   - Protects against eventual abnormal or unusual results.
-  - Provides a way to estimate the variance of the experimental error in the absence of systematic differences between the experimental units.
-  - Provides the ability to increase the precision of estimates of means of treatment.
+  - Provides a way to estimate the *biological* variability (associated to  *experimental error*) in the absence of systematic differences between the experimental units.
+  - Provides the ability to increase the *precision of estimates* of means of treatment.
   
 ---
 # Replication $\neq$ (necessarily) results!
 
-- Replication is importanty but, _it does not necessarily guarantee valid estimates of experimental error_ or, what is more:
+- Replication is important but, _it does not necessarily guarantee valid estimates of experimental error_ or, what is more:
 
 - Having the appropriate sample size **does not guarantee the presence of an effect**.
 
-- The -often heard sentence- _"we didn't detect any effect but if we can collect enough samples the effect will be seen"_ can be considered a _Statistical Myth_.
+- The -often heard sentence- _"we didn't detect any effect but if we can collect enough samples the effect will show up"_ can be considered a _Statistical Myth_.
   
 ---
 
@@ -441,7 +454,29 @@ knitr::include_graphics("images/ssizeformula1.png")
 - Sample size online calculator example: [granmo] (https://www.imim.es/ofertadeserveis/software-public/granmo/)
 
 ---
+# Sample size calculation pitfalls
 
+1. **No explicit effect size definition**. E.g. "*"We powered the study at 80%” — but for what difference?*
+  <!-- - Example: “We powered the study at 80%” — but for what difference? -->
+  
+2. **Powering for only one outcome**. E.g. Three main endpoints (BP, cholesterol, glucose), but power computed only for BP.
+<!-- - Example: Three main endpoints (BP, cholesterol, glucose), but power computed only for BP. -->
+
+3. **Ignoring multiple testing**. e.g. base SS estimation on $\alpha=0,05$ but test 500 proteins
+<!-- - Sample size based on α = 0.05 for one test. -->
+<!-- - Example: Omics study with 500 metabolites. 
+👉 After correction, effective α is much smaller → actual power collapses.-->
+
+4. **Underestimating variability** e.g. by relying on using SD from pilot data with small or homogeneous samples
+<!-- . -->
+<!-- - Example: SD from technical replicates instead of biological variability. -->
+
+5. **Ignoring design structure** such as calculation ignores clustering, pairing, or blocking.
+<!-- - Example: Patients nested within hospitals but treated as independent. -->
+
+<!-- 👉 Effective sample size smaller than planned. -->
+
+---
 # Technical and biological replicates
 
 .pull-left[
@@ -490,7 +525,25 @@ $$ \sigma (TEC) ^ 2 < \sigma (BIO) ^ 2 $$
 - What not to do:
   - Don't use groups when individual information is important (e.g. paired designs).
   - A sample of 3 grouped individuals $\neq$ 3 individual samples!
-    
+
+---
+# Pseudoreplication
+
+- It's when multiple measurements are treated as independent replicates, even though they come from the same experimental unit. In other words: **The number of observations is confused with the number of independent units**.
+
+- Example: Cells in culture
+  - 3 culture dishes per treatment. 50 cells measured per dish.
+  - **Incorrect analysis**:
+Cells per treatment as independent (n = 150).
+  - **Correct analysis**:
+The experimental unit is the dish (n = 3).
+
+- Why does pseudoreplication occur?
+  - Confusion between measurement and experimental unit
+  - Ignoring clustering or hierarchical structure
+  - Convenience (larger n looks more convincing)
+
+- Pseudoreplication is an error *only if it is not addressed by the statistical model*
 ---
 
 # 3. Local control
