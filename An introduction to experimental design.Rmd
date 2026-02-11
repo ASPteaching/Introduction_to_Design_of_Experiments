@@ -72,49 +72,14 @@ name: Introduction
 
 ---
 
-
-# Types of (medical) studies
-
-.center[
-<img align = "center" src = "images/TypesOfStudies.png" width = "100%"> 
-]
-
-source: Dtsch Arztebl Int 2009; 106(15): 262-8. 
-
-DOI: https://doi.org/10.3238/arztebl.2009.0262 
-
----
-
-# Experimental Studies
-
-- Investigate changes in response variable,
-- by manipulating the levels of one or more treatment or independent variables.
-
-- Investigators play active role by (randomly) assigning each individual to each group.
-
-.center[
-<img align = "center" src = "images/ExperimentalStudies.png" width = "90%"> 
-]
-
----
-# Observational Studies
-
-- Investigate changes in response variable,
-- due to different levels of an independent variable,
-
-- Assignment of subjects into each other group is outside the control of the investigator who can only observe the response variable in each group.
-
-.center[
-<img align = "center" src = "images/ObservationalStudies.png" width = "90%">
-]
+![What bis an experiment ](images/what_is_an_experiment.png)
 
 
 ---
+
 # Why experiment?
 
-- A very common type of research study is _experimental studies_.
-
-- The purposes of the experimental studies are diverse. For example, we could propose experiments to:
+- The purposes of experimental studies are diverse. For example, we could propose experiments<sup>1</sup> to:
 
   1. Compare responses to different treatments.
   2. Determine the cause (s) of the response variation.
@@ -123,8 +88,26 @@ DOI: https://doi.org/10.3238/arztebl.2009.0262
   
 - A characteristic of experimental versus observational studies is that, _under the right conditions, the former are the only ones that allow establishing causal relationships_.
 
+.footnote[[1] Exercise: *Provide examples/references of experiments of each type*]
 
 ---
+
+# Why Experimental Design
+
+- In most research contexts, experimental design is not a formality
+
+- It determines what questions can be answered, and which ones cannot, regardless of the amount of data collected
+
+- Indeed, design choices often have a larger impact on results than the specific statistical method used
+
+- Once the data have been collected, many limitations introduced by the design cannot be fixed<sup>1</sup>
+
+.footnote[[1] Exercise: *When a study “does not show anything”, what do you think is more often the problem: the data, the analysis… or the way the study was designed?*]
+
+
+
+---
+
 # An example and basic ideas
 
 - Goal: investigate the effect of a drug/therapy to prevent the development of diabetes in genetically modified mice.
@@ -132,7 +115,6 @@ DOI: https://doi.org/10.3238/arztebl.2009.0262
 - Effectiveness of the treatment may be affected by the diet of the animal, so distinct diets ("D1", "D2", "D3") are considered
 - Mice randomly selected will receive a distinct combination of drug/placebo and D1/D2/D3 diet.
 - To determine the effect of each drug/diet combination, weight, and decrease in insulin resistance will be determined.
-
 .pull-left[
 <img src = "images/DrugEffectExperimentExample.jpg" width = "100%"> 
 ]
@@ -143,34 +125,77 @@ DOI: https://doi.org/10.3238/arztebl.2009.0262
 
 ---
 
-# Some definitions
+# What is an experiment (again)
 
-- An __experiment__ is any investigation in which a particular set of conditions is applied to selected (groups of) individuals and the results are observed and evaluated. app. <br> _For example, effect of therapy in pre-diabetic mice_
+- An __experiment__ is 
 
-- Each group of experimental conditions is a __treatment__ or __factor__. <br> For example "Drug" and "Age" are two factors.
+  - any investigation 
+  
+  - in which a particular set of conditions 
+  
+  - is applied to selected (groups of) individuals 
+  
+  - and the results are observed and evaluated. 
+  
+- _For example, effect of therapy in pre-diabetic mice_
 
-- Each particular condition within a factor is a __level__ of that factor. For example Drug/Placebo or Old/Young are two factors with two levels each.
+---
 
-- The results that we observe after applying a treatment are the __responses__.
+#  Factors, Levels and Blocks
+
+- Each group of experimental conditions is a __treatment__ or __factor__, that is, something you actively vary or compare.
+  - "Drug" or "Diet" are factors.
+
+- Each particular condition within a factor is a __level__ of that factor.
+  - "Drug" is a factor with two levels: *Drug/Placebo*.
+  - "Diet" is a factor with three levels.
+
+- A magnitude that simply differs across samples but whose levels cannot be arbitrarily assigned to an individual is a **block**.
+  - "Age" or "Sex" are blocks
 
 
 ---
 
-# Some important definitions:
+# Experimental Units
 
+.pull-left[
 - __Experimental Unit (UE) __ The physical entity or subject exposed to the treatment independently of other units.
-- Each mouse is an experimental unit
+  - A mouse, a patient, a piece 
   
-- __Unit of observation (UO) __ The unit in which they are carried out.
-observations, that is, measurements.
-- It can be a sample of the EU or be identical to the EU.
-  
-- __Experimental error__: random variation observed between different repetitions carried out, or not, under the same experimental conditions.
+- __Unit of observation (UO) __ The unit in which observations (that is, measurements) are carried out,
+  - Several measurements on the same liver  of a mouse
+  - Multiple measurements of a patient's blood pressure.
+]
 
-- __ Observation error__: The variation between multiple observations of the same
-experimental unit.
+.pull-right[
+
+<img align = "center" src = "images/TypesOfExperimentalUnits.png" width = "95%"> 
+
+From Lazic et al (2017) *What exactly is 'N' in cell culture and animal
+experiments?*
+
+]
 
 ---
+
+# Sources of Variation
+  
+Distinguishing where variability arises is essential to design experiments and interpret results correctly.
+
+### Experimental variation (between experimental units)
+
+- Variation observed between different experimental units exposed to the same nominal experimental conditions.
+- Reflects biological heterogeneity, micro-environmental fluctuations, uncontrolled factors, and natural diversity.
+- Often referred to as *experimental error*.
+
+### Observation (measurement) variation
+
+- Observed when the same experimental unit is measured repeatedly.
+- Reflects instrument precision, operator variability, technical noise, and measurement resolution.
+- Can often be estimated using technical replicates.
+
+---
+
 
 # Types of variability
 
@@ -201,7 +226,9 @@ _Systematic variability_
 
 2. The experimental units to be used
 
-3. The way treatment levels are assigned to the experimental units, that is, _the experimental design_
+3. The way treatment levels are assigned to the experimental units.
+
+  - This is precisely _**the experimental design**_
 
 4. Responses that are measured
 
@@ -212,23 +239,39 @@ _Systematic variability_
 
 - __Avoids biases__ or systematic errors
 
---
 
 - __Allows a precise estimation of the response__, which implies that the random error is as low as possible.
 
---
 
 - __Allows an adequate estimation of the error__.
 
---
 
 - __Has wide validity__: the experimental units are a sample of the population in question, so it is possible to extrapolate the conclusions of the sample to the population.
 
 ---
 
+# Why do we need a good design
+
+- Well designed experiments will be **scientifically sound**:
+
+  - Smaller bias, 
+  - Smaller variability, 
+  - Higher generizability.
+  
+- They allow **saving money**
+  
+  - Budget can be done based on goals
+  - Cost can be optimized
+  
+- Allows **avoiding unnecessary animal use**
+  - [The three Rs](https://norecopa.no/alternatives/the-three-rs/)
+
+---
+
+
 # How to get a good design
 
-- Try to apply some ideas, basic and somewhat redundant, but which, together, guarantee a good result.
+- Apply basic ideas which, together, use to guarantee a good result.
 
   1. Rely on a _checklist_ of the experimental design.
 
@@ -236,13 +279,14 @@ _Systematic variability_
 
   3. Be based on the basic principles of Experimental Design
 
-   - Randomization, 
-   - Replication, 
-   - Local control.
+      - Randomization, 
+      - Replication, 
+      - Local control.
 
 - And also
   - Plan design and analysis __at the same time__,
   - Involve your favorite statistician from the beginning (or before) of the experiment.
+
 
 ---
 
@@ -257,15 +301,8 @@ _Systematic variability_
 7. Describe the tests to be performed.
 8. Estimate the required sample size using the results.
 of the pilot study
-9. Review your decisions in Steps 1 through 8 and make the
-necessary revisions.
-
----
-# Design, Experiment, Analyze
-
-.center[
-<img align = "center" src = "images/metodoCientifico.png" width = "100%"> 
-]
+9. Review your decisions in 1 - 8 and make the 
+necessary adjustments.
 
 ---
 
@@ -295,18 +332,48 @@ name: Principles
 
 # 1. Randomization
 
-- It is not possible to avoid random variations but, <br> we can randomly assign treatments to units to try to compensate for the effect of such variation.
+- It is not possible to avoid random variations but, <br> by randomly assigning treatments to units the effect of such variation can be compensated.
+<br><br>
+*This is precisely what __randomization__ is about*.
 
-- This can be done
+- This can be done in many different ways depending on the experiment:
+
   - Randomly assigning individuals to treatments and/or
   - Running the experiments in random order.
+  - ...
   
+---
+
+# Haphazard is not randomization
+
 - **Randomizing does not mean doing everything at random**. 
 
-- Randomization is also important to ensure the validity of statistical procedures.
+- E.G. Imagine we have 4 treatments to be assigned to  16 units
 
-- Randomization helps preventing a _preferential assignment_  to certain experimental units.
-  - For example, a doctor may be "tempted" to give the drug she thinks works best to patients with the worst prognosis.
+  - **A good strategy** : 
+      - Use sixteen identical slips of paper, 4 marked with A, 4 with B, and so on to D. 
+      - Put the slips of paper into a basket and mix them thoroughly. 
+      - For each unit, we draw a slip of paper from the basket and use the treatment marked on the slip
+  - **A bad way to do it** 
+      - Treatment A is assigned to the first four units we have encounter,
+      - treatment B to next four units, and so on.
+      - *This approach does not protect against possible unknown groupings in experimental units*.
+
+---
+
+# Randomization  avoids confounding
+- Consider a new drug treatment for coronary artery disease. 
+  - 2 treatments to compare: (1) drug treatment vs (2) bypass surgery. 
+  - 100 patients will be assigned to one of the two treatments. 
+  - We then measure five-year survival as a response.
+
+- What sort of trouble can happen if we fail to randomize? 
+  - Bypass surgery is a major operation, and patients with severe disease may not be strong enough to survive the operation:
+	- We decide to assign stronger patients to surgery and the weaker patients to the drug therapy. 
+
+- Patient strength  **is confounded**  with treatment differences. 
+  - The drug therapy would likely have a lower survival rate because it is getting the weakest patients, even if the drug therapy is every bit as good as the surgery.
+
 
 ---
 
@@ -361,6 +428,16 @@ $$
 
 - One can compute the sample size needed given the previous four values or, one can fix any three and compute the other one (for instance the power given a sample size, etc.)
 
+---
+# Sample size calculations
+
+- Sample size to compare 2 (normal) samples with common variance $\sigma$, at a significance level $\alpha$, a power  $\beta$ to detect an effect size $\mu_t-\mu_c$.
+
+```{r, out.width="60%", fig.align='center'}
+knitr::include_graphics("images/ssizeformula1.png")
+```
+
+
 - Sample size online calculator example: [granmo] (https://www.imim.es/ofertadeserveis/software-public/granmo/)
 
 ---
@@ -393,7 +470,7 @@ $$
 - _In general_ : 
 
 $$ \sigma (TEC) ^ 2 < \sigma (BIO) ^ 2 $$
-- source: https://www.licor.com/bio/blog/technical-and-biological-replicates
+<!-- - source: https://www.licor.com/bio/blog/technical-and-biological-replicates -->
 
 
 ---
@@ -404,7 +481,7 @@ $$ \sigma (TEC) ^ 2 < \sigma (BIO) ^ 2 $$
 
 - This could be done when ...
   - Each separate sample does not provide enough mRNA
-  - You want to compensate for excess variability by "averaging" similar samples.
+  - To compensate excess variability by "averaging" similar samples.
 
 - This can be misleading, but correct if done apprpriately:
   - Combining several samples in each group but ...
@@ -412,7 +489,7 @@ $$ \sigma (TEC) ^ 2 < \sigma (BIO) ^ 2 $$
 
 - What not to do:
   - Don't use groups when individual information is important (e.g. paired designs).
-  - A sample with 3 grouped individuals is not the same as 3 individual samples!
+  - A sample of 3 grouped individuals $\neq$ 3 individual samples!
     
 ---
 
@@ -462,17 +539,42 @@ $$ \sigma (TEC) ^ 2 < \sigma (BIO) ^ 2 $$
 
 ---
 
-# Batch effect and its adjustment 
+# Batch effect
 
-.center[ 
-<img align = "center" src = "images/batchEffect.png" width = "75%"> 
-] 
+- A **batch effect** is a non-biological, systematic source of variation introduced 
+  when samples are processed in different groups (e.g., different days, operators,    reagent lots, instruments, or runs).
+
+- Batch effects can create apparent differences between samples that **mimic or
+  obscure true biological signal**.
+
+- Good experimental design aims to minimize batch effects through **balanced   processing and randomization**.
+
+---
+
+# Batch effect detection
+
+```{r, out.width="80%", fig.align='center'}
+knitr::include_graphics("An introduction to experimental design_insertimage_2.png")
+```
+
  
-- A Principal Component Analysis (PCA) can reveal the presence of undetected blocks in the design.
- 
-  - If the different levels of the "batch" are distributed among the treatment levels, it is possible to correct them. 
- 
-  - If there is confusion between the two (for example, each treatment has been done in a distinct batch), the effects cannot be separated.
+- Principal Component Analysis can reveal hidden structure in the data.
+  - Can be used to show undetected blocks in the design.
+
+- If samples separate primarily by **batch** rather than by treatment or phenotype,   this indicates a batch effect.
+
+---
+
+# Adjusting batch effects
+
+- Batch effects can be corrected statistically by including **batch as a factor**   in a linear model or using specialized methods such as **ComBat**, linear regression of unwanted variation (**RUV**), or mixed-effects models.
+
+- Correction methods require that **batch and treatment are not confounded** otherwise the true biological signal cannot be recovered.
+
+- Prevention is even more important:
+  - **randomize** sample processing order, 
+  - **balance** treatment groups within each batch, and 
+  - document metadata to  allow correction.
 
 ---
 
@@ -785,17 +887,17 @@ name: Resources
 
 # References and resources
 
-- [3rs-reduction.co.uk](http://www.3rs-reduction.co.uk/html/main_menu.html)
+- [An introduction to Experimental Design]()
+
+  - The github repository for these materials with some complements including R code examples.
+
+- [The three Rs](https://norecopa.no/alternatives/the-three-rs/)
 
   - A short and interactive introductory course on the design of experiments focused on the benefits derived from an adequate design for the reduction of suffering in experimental animals.
-  
-  - The "Statistical Analysis" section takes a brief tour of some experimental design models and their analysis.
     
 - [A First Course in Design and Analysis of Experiments](http://users.stat.umn.edu/~gary/Book.html)
   
   - A book for an introductory course to design of experiments that the author decided to provide freely on the internet.
-    
-  - "Traditional" approach to the subject with topics that today would be approached differently, but still  very interesting.
     
   - The author updated the examples by implementing them in R.
   
