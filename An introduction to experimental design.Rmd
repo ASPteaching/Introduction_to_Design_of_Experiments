@@ -446,12 +446,22 @@ $$
 
 - Sample size to compare 2 (normal) samples with common variance $\sigma$, at a significance level $\alpha$, a power  $\beta$ to detect an effect size $\mu_t-\mu_c$.
 
-```{r, out.width="60%", fig.align='center'}
+.pull-left[
+```{r, out.width="100%", fig.align='center'}
 knitr::include_graphics("images/ssizeformula1.png")
 ```
+]
 
+.pull-right[
 
-- Sample size online calculator example: [granmo] (https://www.imim.es/ofertadeserveis/software-public/granmo/)
+```{r, out.width="90%", fig.align='center'}
+knitr::include_graphics("images/ssizeCalculator1.png")
+```
+
+[MedCalc Sample size calculator ](https://www.medcalc.org/en/calc/sample-size-comparison-of-means.php)
+
+]
+
 
 ---
 # Sample size calculation pitfalls
@@ -665,7 +675,7 @@ When choosing a design for an experiment we must consider:
   - Are they considered separately or in combination?
   - What are the levels of each treatment?
 
-- The **error control design**.
+- The **Error control design**.
   - How are treatments assigned to experimental units ?. <br> 
 This depends on the resources, the available units, the desired precision, the heterogeneity between UEs.
 
@@ -691,7 +701,7 @@ t [2,2] <- "Assign treatments 1 ... k to EU"
 t [2,3] <- "1 EU = 1 OU"
 t [2,4] <- "Completely Randomized"
 
-t [3,1] <- "1 factor (k levels); \n 1 block (l level), k*l EU"
+t [3,1] <- paste("1 factor (k levels);", "1 block (l level), k*l EU", sep="\n")
 t [3,2] <- "Assign treatments 1 ... k to EU, in each block"
 t [3,3] <- "1 EU = 1 OU"
 t [3,4] <- "Completely randomized block design"
